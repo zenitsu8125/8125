@@ -59,6 +59,7 @@ function scrollToBottom() {
     const lastMessage = chatOutput.lastElementChild;
     lastMessage.scrollIntoView();
 }
+
         function sendMessage(message, sender) {
             const newMessageRef = messagesRef.push();
             newMessageRef.set({
