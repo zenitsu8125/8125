@@ -47,14 +47,22 @@
 
         // JavaScript code for sending message, scrolling to the bottom, and adjusting input label position
 
+// JavaScript code for sending message and maintaining focus on mobile
+
 sendBtn.addEventListener('click', () => {
     const message = userInput.value.trim();
     if (message !== '') {
         sendMessage(message, username);
         userInput.value = '';
-        scrollToBottomAndAdjustInputLabel();
+        // Keep focus on the input field after sending a message
+        userInput.focus();
+        // Scroll to the bottom after a short delay to ensure the input field stays in view
+        setTimeout(() => {
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+        }, 100);
     }
 });
+
 
 // Function to scroll to the bottom of the chat window and adjust input label position
 function scrollToBottom() {
