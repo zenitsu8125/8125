@@ -51,17 +51,20 @@
 
 // JavaScript code for sending message, scrolling to the bottom, and adjusting input label position
 
+// JavaScript code for sending message, scrolling to the bottom, adjusting input label position, and maintaining focus on mobile
+
 sendBtn.addEventListener('click', () => {
     const message = userInput.value.trim();
     if (message !== '') {
         sendMessage(message, username);
         userInput.value = '';
         scrollToBottomAndAdjustInputLabel();
+        // Keep focus on the input field after sending a message
         userInput.focus();
     }
 });
 
-// Function to scroll to the bottom of the chat window and adjust input label position
+// Function to scroll to the bottom of the chat window, adjust input label position, and maintain focus on mobile
 function scrollToBottomAndAdjustInputLabel() {
     chatOutput.scrollTop = chatOutput.scrollHeight;
     adjustInputLabelPosition();
@@ -80,6 +83,7 @@ function adjustInputLabelPosition() {
         inputContainer.style.bottom = '0';
     }
 }
+
 
         function sendMessage(message, sender) {
             const newMessageRef = messagesRef.push();
