@@ -46,13 +46,14 @@
         const messagesRef = firebase.database().ref('messages');
 
         sendBtn.addEventListener('click', () => {
-            const message = userInput.value.trim();
-            if (message !== '') {
-                sendMessage(message, username);
-                userInput.value = '';
-            }
-        });
-
+    const message = userInput.value.trim();
+    if (message !== '') {
+        sendMessage(message, username);
+        userInput.value = '';
+        // Keep focus on the input field after sending a message
+        userInput.focus();
+    }
+});
         function sendMessage(message, sender) {
             const newMessageRef = messagesRef.push();
             newMessageRef.set({
