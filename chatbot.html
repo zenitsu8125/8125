@@ -54,14 +54,13 @@ sendBtn.addEventListener('click', () => {
     if (message !== '') {
         sendMessage(message, username);
         userInput.value = '';
-        scrollToBottomAndAdjustInputLabel();
-        // Keep focus on the input field after sending a message
-        userInput.focus();
         // Scroll to the bottom of the chat window after a short delay to ensure the input field stays in view
         setTimeout(() => {
             chatOutput.scrollTop = chatOutput.scrollHeight;
         }, 100);
     }
+    // Keep focus on the input field after sending a message
+    userInput.focus();
 });
 
 // Function to scroll to the bottom of the chat window and adjust input label position
