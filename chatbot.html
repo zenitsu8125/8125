@@ -47,12 +47,9 @@
 
         // JavaScript code for sending message, scrolling to the bottom, and adjusting input label position
 
-userInput.addEventListener('input', (event) => {
-    if (event.inputType === 'insertLineBreak') {
-        // Do nothing when pressing Enter (to prevent default behavior of adding a new line)
-        return;
-    }
+// JavaScript code for sending message, scrolling to the bottom, adjusting input label position, and maintaining focus on mobile
 
+sendBtn.addEventListener('click', () => {
     const message = userInput.value.trim();
     if (message !== '') {
         sendMessage(message, username);
@@ -60,6 +57,10 @@ userInput.addEventListener('input', (event) => {
         scrollToBottomAndAdjustInputLabel();
         // Keep focus on the input field after sending a message
         userInput.focus();
+        // Scroll to the bottom of the chat window after a short delay to ensure the input field stays in view
+        setTimeout(() => {
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+        }, 100);
     }
 });
 
@@ -82,8 +83,6 @@ function adjustInputLabelPosition() {
         inputContainer.style.bottom = '0';
     }
 }
-
-
         function sendMessage(message, sender) {
             const newMessageRef = messagesRef.push();
             newMessageRef.set({
