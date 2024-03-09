@@ -57,6 +57,7 @@ sendBtn.addEventListener('click', () => {
         sendMessage(message, username);
         userInput.value = '';
         scrollToBottomAndAdjustInputLabel();
+        userInput.focus();
     }
 });
 
