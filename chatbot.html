@@ -45,19 +45,33 @@
 
         const messagesRef = firebase.database().ref('messages');
 
-        sendBtn.addEventListener('click', () => {
+        // JavaScript code for sending message, scrolling to the bottom, and adjusting input label position
+
+sendBtn.addEventListener('click', () => {
     const message = userInput.value.trim();
     if (message !== '') {
         sendMessage(message, username);
         userInput.value = '';
-        setTimeout(scrollToBottom, 100); // Scroll to bottom after a short delay
+        scrollToBottomAndAdjustInputLabel();
     }
 });
 
-// Function to scroll to the bottom of the chat window
-function scrollToBottom() {
+// Function to scroll to the bottom of the chat window and adjust input label position
+function scrollToBottomAndAdjustInputLabel() {
+    chatOutput.scrollTop = chatOutput.scrollHeight;
+    adjustInputLabelPosition();
+}
+
+// Function to adjust input label position
+function adjustInputLabelPosition() {
     const lastMessage = chatOutput.lastElementChild;
-    lastMessage.scrollIntoView();
+    const inputContainerHeight = inputContainer.offsetHeight;
+    const lastMessageBottom = lastMessage.offsetTop + lastMessage.offsetHeight;
+    if (lastMessageBottom > chatOutput.clientHeight - inputContainerHeight) {
+        inputContainer.style.bottom = `${inputContainerHeight}px`;
+    } else {
+        inputContainer.style.bottom = '0';
+    }
 }
 
         function sendMessage(message, sender) {
