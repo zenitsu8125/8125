@@ -50,10 +50,15 @@
     if (message !== '') {
         sendMessage(message, username);
         userInput.value = '';
-        // Keep focus on the input field after sending a message
-        userInput.focus();
+        setTimeout(scrollToBottom, 100); // Scroll to bottom after a short delay
     }
 });
+
+// Function to scroll to the bottom of the chat window
+function scrollToBottom() {
+    const lastMessage = chatOutput.lastElementChild;
+    lastMessage.scrollIntoView();
+}
         function sendMessage(message, sender) {
             const newMessageRef = messagesRef.push();
             newMessageRef.set({
