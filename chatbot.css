@@ -24,29 +24,38 @@ body {
 
 .message {
   margin-bottom: 5px; /* Reduce margin */
-  padding: 2px 4px; /* Reduce padding */
+  padding: 6px 8px; /* Reduce padding */
   border-radius: 8px;
 }
 
 .message.sent {
+  width: auto;
   background-color: #075e54;
   color: #fff;
   text-align: right;
 }
 
 .message.received {
+  width: auto;
   background-color: #128c7e;
   color: #fff;
   text-align: left;
 }
 
 #input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+    box-sizing: border-box;
   display: flex;
   align-items: center;
 }
 
 #user-input {
-  width: calc(100% - 40px); /* Adjust width to accommodate the send icon */
+  flex: 1;
+  width: calc(100% - 90px); /* Adjust width to accommodate the send and image icons */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 30px;
@@ -57,7 +66,8 @@ body {
   z-index: 1; /* Set a higher z-index to overlay other elements */
 }
 
-#send-label {
+#send-label,
+#image-label {
   width: 40px;
   height: 40px;
   background-color: #128c7e;
@@ -70,16 +80,18 @@ body {
   border: none; /* Remove border */
   position: relative; /* Add relative positioning */
   z-index: 2; /* Set a higher z-index to overlay other elements */
+  margin-right: 8px;
 }
 
-#send-label i {
+#send-label i,
+#image-label i {
   margin-right: 2px; /* Adjust icon position */
 }
 
-#send-label:hover {
+#send-label:hover,
+#image-label:hover {
   background-color: #075e54;
 }
-
 
 #send-btn {
   display: none;
