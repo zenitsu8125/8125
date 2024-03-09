@@ -57,11 +57,10 @@ sendBtn.addEventListener('click', () => {
 });
 
 // Function to scroll to the bottom of the chat window and adjust input label position
-function scrollToBottomAndAdjustInputLabel() {
-    chatOutput.scrollTop = chatOutput.scrollHeight;
-    adjustInputLabelPosition();
+function scrollToBottom() {
+    const lastMessage = chatOutput.lastElementChild;
+    lastMessage.scrollIntoView();
 }
-
 // Function to adjust input label position
 function adjustInputLabelPosition() {
     const lastMessage = chatOutput.lastElementChild;
